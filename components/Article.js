@@ -114,3 +114,43 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(article) {
+  let newArticle = document.createElement('div');
+  let h2 = document.createElement('h2');
+  let pAttr1 = document.createElement('p');
+  let pAttr2 = document.createElement('p');
+  let pAttr3 = document.createElement('p');
+  let pAttr4 = document.createElement('p');
+  let span = document.createElement('span');
+  let date = new Date();
+  newArticle.setAttribute('class', 'article');
+  pAttr1.setAttribute('class', 'date');
+  h2.textContent = article;
+  span.setAttribute('class', 'expandButton');
+  span.textContent = "+";
+  pAttr1.textContent = date;
+  pAttr2.setAttribute('class', 'paragraph');
+  pAttr3.setAttribute('class', 'paragraph');
+  pAttr4.setAttribute('class', 'paragraph');
+  newArticle.appendChild(h2);
+  newArticle.appendChild(pAttr1);
+  newArticle.appendChild(pAttr2);
+  newArticle.appendChild(pAttr3);
+  newArticle.appendChild(pAttr4);
+  newArticle.appendChild(span)
+  return newArticle
+}
+
+const article1 = articleMaker("I did it!")
+
+console.log(article1, "the result from my new article")
+
+function thisIsBS(text) {
+  let newArticle = document.createElement('div')
+  newArticle.classList.add = "test"
+  newArticle.textContent = text
+  return newArticle
+}
+const newArt = thisIsBS('pissed')
+console.log(newArt)
