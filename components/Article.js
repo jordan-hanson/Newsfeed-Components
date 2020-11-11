@@ -86,6 +86,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'I am awesome',
+    date: 'November 10, 2020',
+    firstParagraph: "Hello!! Hello! Hello!! Hello! Hello!! Hello! Hello!! Hello! Hello!! Hello! Hello!! Hello! Hello!! Hello!",
+    secondParagraph: "Killing it! Killing it! Killing it! Killing it! Killing it! Killing it! Killing it! ",
+    thirdParagraph: "I love coding! I love coding! I love coding! I love coding! I love coding! I love coding! "
   }
 ];
 
@@ -115,7 +122,7 @@ const data = [
   Refresh the page to see the new article.
 */
 
-function articleMaker(article) {
+function articleMaker(data) {
   let newArticle = document.createElement('div');
   let h2 = document.createElement('h2');
   let pAttr1 = document.createElement('p');
@@ -123,34 +130,33 @@ function articleMaker(article) {
   let pAttr3 = document.createElement('p');
   let pAttr4 = document.createElement('p');
   let span = document.createElement('span');
-  let date = new Date();
+  let date = data.date
   newArticle.setAttribute('class', 'article');
   pAttr1.setAttribute('class', 'date');
-  h2.textContent = article;
+  h2.textContent = data.title;
   span.setAttribute('class', 'expandButton');
   span.textContent = "+";
   pAttr1.textContent = date;
   pAttr2.setAttribute('class', 'paragraph');
   pAttr3.setAttribute('class', 'paragraph');
   pAttr4.setAttribute('class', 'paragraph');
+  pAttr2.textContent = data.firstParagraph;
+  pAttr3.textContent = data.secondParagraph;
+  pAttr4.textContent = data.thirdParagraph;
   newArticle.appendChild(h2);
   newArticle.appendChild(pAttr1);
   newArticle.appendChild(pAttr2);
   newArticle.appendChild(pAttr3);
   newArticle.appendChild(pAttr4);
   newArticle.appendChild(span)
+  // span.addEventListener('article-open', newArticle)
+  // document.getElementsByClassName('article').addEventListener("toggle", )
   return newArticle
 }
 
-const article1 = articleMaker("I did it!")
-
-console.log(article1, "the result from my new article")
-
-function thisIsBS(text) {
-  let newArticle = document.createElement('div')
-  newArticle.classList.add = "test"
-  newArticle.textContent = text
-  return newArticle
-}
-const newArt = thisIsBS('pissed')
-console.log(newArt)
+data.forEach((data) => {
+  let newArticle = articleMaker(data);
+  let articleList = document.querySelector('.articles')
+  console.log(articleList)
+  articleList.appendChild(newArticle)
+})
